@@ -2292,4 +2292,352 @@
 # print(outer(1, 6, 8))
 
 # print("Вносим изменения")
-print("Данные переносим на GitHub")
+# print("Данные переносим на GitHub")
+
+
+# def mult(t):
+# return t * 2
+
+
+# lst = [2, 8, 12, -5, -10]
+
+# lst2 = list(map(mult, lst))
+# print(list(map(lambda t: t * 2, [2, 8, 12, -5, -10])))
+# print(lst2)
+
+# t = (2.88, 1.78, -100.55)
+#
+# # t2 = tuple(map(lambda x: int(x), t))
+# t2 = tuple(map(int, t))
+# print(t2)
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5]
+#
+# res = dict(map(lambda x, y: (x, y), st, num))
+# print(res)
+
+# l1 = [1, 2, 3]
+# l2 = [4, 5, 6]
+#
+# res = list(map(lambda x, y: x + y, l1, l2))
+# print(res)
+
+
+# t = ('abcd', 'abc', 'deft', 'on', 'ert')
+#
+# # t2 = tuple(filter(lambda s: len(s) == 3, t))
+# # t2 = tuple(map(lambda s: s * 3, t))
+# # t2 = tuple(filter(lambda s: len(s) != 3, t))
+# print(t2)
+
+# b = [60, 90, 73, 85, 75, 99, 45, 71]
+# res = list(filter(lambda s: s > 75, b))
+# print(res)
+
+
+# from random import randint
+#
+# lst = [randint(1,40) for i in range(10)]
+# print(lst)
+#
+# lst2 = list(filter(lambda t: 10 <= t <= 20, lst))
+# print(lst2)
+
+
+# m = list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(10))))  # 1 - range, 2 - filter, 3 - map, 4 - list
+# print(m)
+#
+# m1 = [x ** 2 for x in range(10) if x % 2]
+# print(m1)
+
+# Декораторы
+
+# def hello():  # 3 func
+#     return "hello, I am func 'hello'"
+#
+#
+# def super_func(func):  # 2 в func приходит функция hello (нужно называть другим именем)
+#     print("hello, I am super_func 'hello'")
+#     print(func())
+#
+#
+# super_func(hello)  # 1
+
+# def hello():
+#     return "hello, I am func 'hello'"
+#
+#
+# test = hello
+# print(test())
+
+# def my_decorator(func):
+#     def inner():
+#         print("Code before")
+#         func()
+#         print("Code after")
+#
+#     return inner
+#
+#
+# def func_test():
+#     print("hello, I am func_test 'hello'")
+#
+#
+# test = my_decorator(func_test)
+# test()
+
+# def my_decorator(func):  # декорирующая функция
+#     def inner():
+#         print("*" * 40)
+#         func()
+#         print("=" * 40)
+#
+#     return inner
+#
+#
+# @my_decorator  # декоратор
+# def func_test():  # декорируемая функция
+#     print("hello, I am func_test 'hello'")
+#
+#
+# @my_decorator
+# def hello():
+#     print("hello, I am func 'hello'")
+#
+#
+# func_test()
+# hello()
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>" + fn() + "</b>"
+#     return wrap
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#     return wrap
+#
+#
+# @italic
+# @bold
+# def hello():
+#     return "text"
+#
+#
+# print(hello())
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции: ", count)
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+# hello()
+# hello()
+
+# def args_decorator(fn):
+#     def wrap(arg1, arg2):
+#         print("Данные: ", arg1, arg2)
+#         fn(arg1, arg2)
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(name, surname):
+#     print("Меня зовут", name, surname)
+#
+#
+# print_full_name("Ирина", "Ветрова")
+
+# def args_decorator(fn):
+#     def wrap(*args, **kwargs):
+#         print("args: ", args)  # кортеж
+#         print("kwargs: ", kwargs)  # словарь
+#         fn(*args, **kwargs)
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(a, b, c, study="Python"):
+#     print(a, b, c, "изучают", study, "\n")
+#
+#
+# print_full_name("Ирина", "Борис", "Светлана", study="JavaScript")
+# print_full_name("Владимир", "Екатерина", "Виктор")
+
+# def decor(args1, args2):
+#     def args_dec(fn):  # это функция декорирующая
+#         def wrap(x, y):
+#             print(args1, x, args2, y, "=", end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#     return args_dec
+#
+#
+# @decor("Сумма:", "+")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor("Разность:", "-")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# @decor("Произведение:", "*")
+# def mul(a, b):
+#     print(a * b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+# mul(5, 2)
+
+# def multiply(arg):
+#     def decor(fn):
+#         def wrap(*args, **kwargs):
+#             return arg * fn(*args, **kwargs)
+#
+#         return wrap
+#     return decor
+#
+#
+# @multiply(3)
+# def return_num(num):
+#     return num
+#
+#
+# print(return_num(5))
+
+# Домашняя работа
+# def wrap(fn)
+
+
+# 17/03/2024
+# Строки
+
+# print(01)  # 0 стоять по умолчанию не может
+# print(bin(18))  # 0b10010 - 0b - двоичная система
+# print(oct(18))  # 0o22 - 0o - показатель, что восьмиричная система
+# print(hex(18))  # 0x12 - 0x - показатель, что шестнадцатеричная система
+#
+# print(0b10010)
+# print(0x12 + 0x12)
+# print(0b10010 + 0o22)
+
+# q = "Pyt"
+# w = "hon"
+# e = q + w
+# print(e)
+# # print(e * 3)
+# # print("y" in e)
+# # print(e[1])
+# # print(e[-1])
+# # print(e[1:4])
+# # e[3] = 't'  # нельзя изменить буквы, строки не изменяемый тип данных
+# e = e[:3] + "t" + e[4:]
+# print(e)
+
+# print("Привет")
+# print(u"Привет")
+# print(r"Привет")
+
+# print('C:\\folder\\file.txt')
+# print(r'C:\folder\file.txt')  # r - игнорирует \\
+# print(r'C:\folder\\'[:-1])
+# print(r'C:\folder' + "\\")
+# print('C:\\folder\\')
+
+# name = "Дмитрий"
+# age = 25
+# print("Меня зовут " + name + ". Мне " + str(age) + " лет.")
+# a = f"Меня зовут {name}. Мне {age} лет."
+# # print(f"Меня зовут {name}. Мне {age} лет.")
+# print(a)
+# print(f'Число {round(10.2564, 2)}, {5 + 3}')
+# print(f'Число {12.526:.2f}')
+
+# x = 10
+# y = 5
+# print(f'{x=}, {y=}')
+# print(f'{x} x {y} / 2 = {x * y / 2}')
+
+# dir_name = "folder"
+# file_name = "file.txt"
+# print(fr"home\{dir_name}\{file_name}")
+# print("home\\" + dir_name + '\\' + file_name)
+
+# s = '''Строка
+# символов'''
+# print(s)
+#
+# s1 = """Строка
+# символов"""
+# print(s1)
+#
+# s2 = 'Строка ' \
+#       'символов'
+# print(s2)
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n"""
+#     return n ** 2
+#
+#
+# print(square(5))
+
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#     """
+#     return 2 * pi * r * (r + h)
+
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+# print(sum.__doc__)
+# print(len.__doc__)
+# print(int.__doc__)
+# print(type.__doc__)
+
+# print(ord('a'))
+# print(ord('и'))
+
+# while True:
+#     n = input("->")
+#     if n != "-1":
+#         print(ord(n))
+#     else:
+#         break
+
+# st = "Test string for me"
+# arr = [ord(x) for x in st]
+# print("ASCII коды:", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("Среднее арифметическое:", arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
