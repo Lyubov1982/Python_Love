@@ -3119,7 +3119,8 @@
 # two = "two.txt"
 # three = "three.txt"
 #
-# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4
+# # \nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
 # # with open(one, "w") as f:
 # #     f.write(text)
 #
@@ -3154,3 +3155,350 @@
 #         c.append(a[i])
 #         c.append(b[i])
 #     f3.writelines(c)
+
+# 06/04/2024
+
+# file = "text2.txt"
+# f = open(file, "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;\n")
+# f.close()
+# f = open(file, 'r')
+# read_line = f.readlines()
+# f.close()
+# print(read_line)
+# pos1 = int(input("pos1 = "))
+# pos2 = int(input("pos2 = "))
+# if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):  # a, b = b, a
+#     read_line[pos1], read_line[pos2] = read_line[pos2], read_line[pos1]
+# else:
+#     print("Такой строки нет")
+# print(read_line)
+# f = open(file, "w")
+# f.writelines(read_line)
+# f.close()
+
+# file = "text2.txt"
+# f = open(file)
+# line = 0
+# for i in f:
+#     line += 1
+#     word = 0
+#     flag = 0
+#     for j in i:
+#         if j != " " and flag == 0:
+#             word += 1
+#             flag = 1
+#         elif j == " ":
+#             flag = 0
+#
+#     print(i, len(i), "символов", word, "слов")
+#
+#
+# print(line, "строки в документе")
+# f.close()
+
+# Модуль OS и OS.PATH
+
+# import os
+# import os.path
+
+# print(os.getcwd())  # путь к файлу
+# print(os.listdir())  # список файлов и директориям
+# print(os.listdir(".."))
+
+# os.mkdir("folder1")  # создать папку
+# os.makedirs("nested1/nested2/nested3") # создание папки и промежуточных путей к папке
+# os.remove("folder1/1.txt")  # удалить файл в папке
+# os.rmdir("folder1")  # удаление только пустой папки
+
+# os.rename("xyz.txt", "test2.txt")
+# os.rename("folder", "test")  # переименовать файл или папку
+
+# os.rename("test2.txt", "test/xy.txt")
+# os.renames("test2.txt", "test/xy.txt")
+# переименовывает файлы и папки и перемещает их по несуществующему пути, путем создания этого пути
+
+# for root, dirs, files in os.walk("nested1", topdown=False):
+#     print("Root:", root)
+#     print("\tSubdirs:", dirs)
+#     print("\tFiles:", files)
+
+
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print("-" * 50)
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена")
+#     print("-" * 50)
+#
+#
+# remove_empty_dirs("nested1")
+
+# print(os.path.split(r"C:\Users\karip\OneDrive\Рабочий стол\Python\318\PY\Python1\nested1\nested2\text.txt"))
+# print(os.path.join(r"C:\Users\karip\OneDrive\Рабочий стол", "318", "nested2"))
+
+# dirs = [r"Work\F1", r"Work\F2\F21"]
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     "Work": ["w.txt"],
+#     r"Work\F1": ["f11.txt", "f12.txt", "f13.txt"],
+#     r"Work\F2\F21": ["f211.txt", "f212.txt"]
+# }
+# for d, f in files.items():
+#     for file in f:
+#         file_path = os.path.join(d, file)
+#         open(file_path, "w").close()
+#
+# file_with_text = [r"Work\w.txt", r"Work\F1\f12.txt", r"Work\F2\F21\f211.txt"]
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f'Текст для файла {file}')
+#
+#
+# def print_tree(root, topdown):
+#     print(f'Обход {root} {"сверху вниз" if topdown else "снизу вверх"}')
+#     for root, dirs, files1 in os.walk(root, topdown):
+#         print(root)
+#         print(dirs)
+#         print(files1)
+#     print("-" * 50)
+#
+#
+# print_tree("Work", False)
+# print_tree("Work", True)
+
+# print(os.path.exists(r"C:\Users\karip\OneDrive\Рабочий стол\Python\318\PY\Python1\nested1\nested2\text.txt"))
+# возвращает True если путь существует в файловой системе
+# import time
+#
+# path = "main.py"
+# print(os.path.getsize(path) / 1024)  # размер файла в байтах
+#
+# print(os.path.getctime(path))  # время создания файла
+# print(os.path.getatime(path))  # время последнего доступа к файлу
+# print(os.path.getmtime(path))  # время последнего изменения файла (в секундах)
+#
+# print(time.strftime("%d.%m.%y, %H:%M:%S", time.localtime(os.path.getctime(path))))
+# print(time.strftime("%d.%m.%y, %H:%M:%S", time.localtime(os.path.getatime(path))))
+# print(time.strftime("%d.%m.%y, %H:%M:%S", time.localtime(os.path.getmtime(path))))
+
+# print(os.path.isdir(r"C:\Users\karip\OneDrive\Рабочий стол\Python\318\PY\Python1\nested1\nested2"))
+# print(os.path.isfile(r"C:\Users\karip\OneDrive\Рабочий стол\Python\318\PY\Python1\nested1\nested2\text.txt"))
+
+# class Point:
+#     """Класс для представления координат точек на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 5
+# p1.y = 10
+# p1.z = 30
+# print(p1.x)
+# print(p1.y)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# print(p2.x)
+# print(p2.y)
+# print(p2.__dict__)
+#
+# print(id(Point))
+# print(id(p1))
+# print(id(p2))
+# print(Point.__dict__)
+# print(Point.__doc__)
+
+# 07/04/2024
+
+# import os
+#
+#
+# dir_name = "Work"
+#
+# objs = os.listdir(dir_name)
+# print(objs)
+#
+# for obj in objs:
+#     p = os.path.join(dir_name, obj)
+#     # print(p)
+#     if os.path.isfile(p):
+#         print(f"{obj} - file - {os.path.getsize(p)} bytes")
+#     elif os.path.isdir(p):
+#         print(f"{obj} - dir")
+
+# class Point:
+#     """Класс для представления координат точек на плоскости"""
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 10
+# p1.set_coord(5, 10)
+# Point.set_coord(p1, 2, 4)
+#
+# p2 = Point()
+# # p2.x = 3
+# # p2.y = 3
+# p2.set_coord(3, 7)
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}")
+#         print(f"Дата рождения: {self.birthday}")
+#         print(f"Номер телефона: {self.phone}")
+#         print(f"Страна: {self.country}")
+#         print(f"Город: {self.city}")
+#         print(f"Домашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.name = first_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.country = country
+#         self.city = city
+#         self.address = address
+#
+#     def set_name(self, name):  # устанавливаем новое имя
+#         self.name = name
+#
+#     def get_name(self):  # получаем имя
+#         return self.name
+#
+#     def set_birthday(self, value):
+#         self.birthday = value
+#
+#     def get_birthday(self):
+#         return self.birthday
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 2а")
+# h1.print_info()
+# h1.set_name("Юлия")
+# print(h1.get_name())
+# h1.set_birthday("24.10.1982")
+# print(h1.get_birthday())
+
+# class Person:
+#     skill = 10  # статическое свойство
+
+#     def __init__(self, name, surname):  # Инициализатор
+#         self.name = name  # динамические свойства
+#         self.surname = surname
+#         print("Инициализатор класса Person")
+#
+#     def __del__(self):
+#         print("Удаление экземпляра класса")
+#
+#     def print_info(self):
+#         print("Данные сотрудника: ", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника: ", self.skill, end="\n\n")
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# p1.add_skill(3)
+#
+# # del p1
+# p1 = 5
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+
+# class Point:
+#     count = 0
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#     def get_court(self):
+#         print(self.__dict__)
+#
+#
+# p1 = Point(5, 10)
+# p1.get_court()
+#
+#
+# p2 = Point(3, 7)
+# p2.get_court()
+#
+#
+# p3 = Point(8, 16)
+# p3.get_court()
+#
+# print(p1.count)
+# print(p2.count)
+# print(p3.count)
+# print(Point.count)
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота: ", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут ", self.name)
+#
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось: ", Robot.k)
+#
+#
+# droid1 = Robot("R2-D2")
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+# droid2 = Robot("C-3PO")
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# droid3 = Robot("CR-4PO")
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# print("\nЗдесь роботы могут проделать какую-то работу\n")
+#
+# print("Роботы закончили свою работу. Давайте их выключим.")
+#
+# del droid1
+# del droid2
+# del droid3
+#
+# print("Численность роботов:", Robot.k)
