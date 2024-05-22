@@ -5594,48 +5594,182 @@
 # # group1.jornal_group(files_group)
 # group2.jornal_group(files_group)
 
-import json
-from random import choice
 
-data = {}
+# ДЗ 18/05/2024
+# import json
+# from random import choice
+#
+# data = {}
+#
+#
+# class CountryCapital:
+#     def __init__(self, country, capital):
+#         self.country = country
+#         self.capital = capital
+#         data[self.country] = self.capital
+#
+#     def __str__(self):
+#         return f"{self.country}: {self.capital}"
+#
+#     @staticmethod
+#     def add_country(file_name):
+#         country_name = input("Введите название страны: ")
+#         capital_name = input("Введите название столицы: ")
+#
+#         try:
+#             date = json.load(open(file_name))
+#         except FileNotFoundError:
+#             date = {}
+#
+#         date[country_name] = capital_name
+#
+#         with open(file_name, 'w') as f:
+#             json.dump(date, f, indent=2)
+#
+#     @staticmethod
+#     def load_from_file(file_name):
+#         with open(file_name, 'r') as f:
+#             print(json.load(f))
+#
+#
+# file = "List_capital.json"
+# index = ""
+# while index != '6':
+#     index = input("Выбор данных:\n1-добавление данных\n2-удаление данных'
+#     '\n5-просмотр данных\n6-завершение работы\nВвод: ")
+#     if index == "1":
+#         CountryCapital.add_country(file)
+#     if index == "5":
+#         CountryCapital.load_from_file(file)
+# # поставить 3 if и 3 def
 
+# 19/05/2024
+# import requests
+# import json
+# #
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# # print(response.text)
+# todos = json.loads(response.text)
+# # print(todos)
+# todos_by_user = {}
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# print(todos_by_user)
+#
+# top_user = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_user)  # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
+# max_complete = top_user[0][1]
+# print(max_complete)
+# users = []
+# for user, num_complete in top_user:
+#     if num_complete < max_complete:
+#         break
+#     users.append(str(user))
+#
+# print(users)
+# # users = ['5']
+# max_users = " and ".join(users)
+# s = 's' if len(users) > 1 else ''
+# print(f"User{s} {max_users} completed {max_complete} TODOs")
+#
+#
+# def keep(tod):
+#     is_completed = tod['completed']
+#     has_max_count = str(tod['userId']) in users
+#     return is_completed and has_max_count
+#
+#
+# with open("filtered_data.json", 'w') as f:
+#     filtered = list(filter(keep, todos))
+#
+#     json.dump(filtered, f, indent=2)
+# import csv
 
-class CountryCapital:
-    def __init__(self, country, capital):
-        self.country = country
-        self.capital = capital
-        data[self.country] = self.capital
+# reader - работает только со списком
+# DictReader - работает с данными словаря
 
-    def __str__(self):
-        return f"{self.country}: {self.capital}"
+# with open("data.csv") as f:
+#     file_reader = csv.reader(f, delimiter=";")
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} - {row[1]}. Год рождения {row[2]}")
+#         count += 1
 
-    @staticmethod
-    def add_country(file_name):
-        country_name = input("Введите название страны: ")
-        capital_name = input("Введите название столицы: ")
+# with open("data.csv") as f:
+#     field_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=field_names)  # данные в виде словаря
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"\t{row['Имя']} - {row['Профессия']}. Год рождения {row['Год рождения']}")
+#         count += 1
 
-        try:
-            date = json.load(open(file_name))
-        except FileNotFoundError:
-            date = {}
+# write
+# DictWrite
 
-        date[country_name] = capital_name
+# with open("student.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "9", "18"])
 
-        with open(file_name, 'w') as f:
-            json.dump(date, f, indent=2)
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+# with open("data_new.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerow(data)
+#
 
-    @staticmethod
-    def load_from_file(file_name):
-        with open(file_name, 'r') as f:
-            print(json.load(f))
+# with open("student1.csv", "w") as f:
+#     names = ["Имя", "Возраст"]
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=names)
+#     writer.writeheader()  # заголовочная строка
+#     writer.writerow({"Имя": "Саша", "Возраст": 6})
+#     writer.writerow({"Имя": "Маша", "Возраст": 11})
+#     writer.writerow({"Имя": "Вова", "Возраст": 15})
 
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open("dict_writer.csv", "w") as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
 
-file = "List_capital.json"
-index = ""
-while index != '6':
-    index = input("Выбор данных:\n1-добавление данных\n2-удаление данных\n5-просмотр данных\n6-завершение работы\nВвод: ")
-    if index == "1":
-        CountryCapital.add_country(file)
-    if index == "5":
-        CountryCapital.load_from_file(file)
-# поставить 3 if и 3 def
