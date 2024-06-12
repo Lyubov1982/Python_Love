@@ -36,7 +36,7 @@ class CountryCapital:
     @staticmethod
     def delete_country(file_name):
         with open(file_name, 'w') as f:
-            json.dump({}, f)  # Записываем пустой словарь в файл
+            json.dump({}, f)
         print("Данные успешно очищены.")
 
     @staticmethod
