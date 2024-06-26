@@ -41,4 +41,4 @@ def _load_fake_data(session):
         session.add(student)
 
     session.commit()
-    session.close()
+    # session.close()

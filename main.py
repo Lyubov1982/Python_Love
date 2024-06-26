@@ -5985,16 +5985,16 @@
 #     main()
 
 
-from parsers import Parser
-
-
-def main():
-    pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
-    pars.run()
-
-
-if __name__ == '__main__':
-    main()
+# from parsers import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 # 26/05/2024 Controller
 # 02/06/2024 БАЗА ДАННЫХ
