@@ -7,6 +7,7 @@ app.config["SECRET_KEY"] = ('fhf54884fgdegry444dhrt4t8t4h8f4h8'
 menu = [
     {'name': 'Главная', 'url': 'index'},
     {'name': 'О нас', 'url': 'about'},
+    {'name': 'Контакты', 'url': 'address'},
     {'name': 'Обратная связь', 'url': 'contact'},
 ]
 
@@ -20,6 +21,11 @@ def index():
 @app.route('/about')
 def about():
     return render_template('about.html', title="О нас", menu=menu)
+
+
+@app.route('/address')
+def address():
+    return render_template('address.html', title="Контакты", menu=menu)
 
 
 @app.route("/profile/<int:username>")

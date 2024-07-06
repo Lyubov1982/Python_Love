@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% macro input_field(name, type, placeholder) -%}
+    <p><input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"></p>
+{% endmacro %}
+
+{% for field in users %}
+    {{ input_field(field.type, field.name, field.placeholder) }}
+{% endfor %}
+
+</body>
+</html>
