@@ -1,0 +1,132 @@
+body{
+        background: rgb(238, 242, 244);
+        margin: 0;
+        padding: 0;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        height: 100%;
+        width: 100%;
+}
+.menu{
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        background: rgb(20, 43, 74);
+        padding: 20px;
+        margin-top: 0;
+}
+
+.catalog{
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    width: 300px;
+    height: 500px;
+}
+.catalog1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+
+.content{
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+}
+.content h1 {
+    color: rgb(20, 43, 74);
+    font-weight: bold;
+    font-size: 45px;
+    text-align: center;
+
+}
+
+.content h2 {
+    color: rgb(20, 43, 74);
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.flash{
+    padding: 10px;
+}
+ 
+.flash.success{
+    border: 1px solid #21DB56;
+    background: #AEFFC5;
+}
+.flash.error{
+        border: 1px solid #FF4343;
+        background: #FF9C9C;
+    }
+.menu a{
+        font-weight:lighter;
+        color: white;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+    }
+     
+    .title a{
+        text-decoration: none;
+        color: rgb(251, 250, 250);
+    }
+     
+    .title, .annonce{
+        border: 1px solid #CCC;
+        padding: 15px 15px;
+    
+    }
+     
+    .title{
+        margin: 0;
+        font-weight: bold;
+        background:rgb(20, 43, 74);
+        text-align: center;
+    }
+    .title2{
+        margin: 0;
+        font-weight: bold;
+        background: rgb(209, 220, 243);
+        text-align: center;
+        padding:20px 20px;
+        margin: 10px;
+    }
+     
+    .title a{
+        display: block;
+    }
+     
+    .title:hover{
+        background: rgb(6, 102, 198);
+    }
+     
+    .annonce{
+        margin-top: -1px;
+        margin-bottom: 40px;
+        background: #FFF;
+        text-align: center;
+    }
+
+.form-contact label {
+        display: inline-block;
+        min-width: 80px;
+    }
+.form-contact p {margin: 10px 0 10px 0;}
+.form-contact input[type-submit], textarea {font-size: 16px;}
+.sub {
+    background-color: rgb(41, 90, 154);
+    color: #f5f5f8;
+    font-weight: bold;
+    height: 30px;
+    width: 80px;
+    border-radius: 0.4em;
+    display: inline-block;
+    text-align: center;
+}

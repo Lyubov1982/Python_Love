@@ -7,7 +7,11 @@ CREATE TABLE IF NOT EXISTS mainmenu(
 CREATE TABLE IF NOT EXISTS posts(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
+    price TEXT NOT NULL,
     text TEXT NOT NULL,
     time INTEGER NOT NULL
 
 );
+DELETE FROM posts;
+
+ALTER TABLE posts ADD created_on COLUMN price int;

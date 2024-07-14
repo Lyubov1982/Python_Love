@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{super()}}
+
+<hr>
+<h2>Каталог курсов</h2>
+
+<ul class="catalog1">
+    {% for p in posts %}
+    <li class="catalog">
+        <div class="annonce">
+        <p class="title">
+            <a href="{{ url_for('show_post', id_post=p.id )}}">{{ p.title }}</a>
+        </p>
+        <p class="title2">{{ p.title }}</p>
+            {{ p.text[:500] | striptags }}
+            <p><input class="sub" type="submit" value="Купить"></p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

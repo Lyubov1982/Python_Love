@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, g
+from flask import Flask, render_template, request, flash, g, redirect, session, url_for, abort
 import sqlite3
 import os
 from FDataBase import FDataBase
@@ -45,16 +45,36 @@ def add_post():
     dbase = FDataBase(db)
 
     if request.method == "POST":
-        if len(request.form["name"]) > 4 and len(request.form["post"]) > 10:
+        if len(request.form["name"]) > 3 and len(request.form["post"]) > 10:
             res = dbase.add_post(request.form["name"], request.form["post"])
             if not res:
-                flash("Ошибка добавления статьи", category='error')
+                flash("Ошибка добавления курса", category='error')
             else:
-                flash("Статья добавлена успешно", category='success')
+                flash("Курс добавлен успешно", category='success')
         else:
-            flash("Ошибка добавления статьи", category='error')
+            flash("Ошибка добавления курса", category='error')
 
-    return render_template('add_post.html', menu=dbase.get_menu(), title="Добавление статьи")
+    return render_template('add_post.html', menu=dbase.get_menu(), title="Добавление курса")
+
+
+@app.route("/profile/<username>")
+def profile(username):
+    if 'userLogged' not in session or session['userLogged'] != username:
+        abort(401)
+
+    return f"Профиль пользователя: {username}"
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    db = get_db()
+    dbase = FDataBase(db)
+    if 'userLogged' in session:
+        return redirect(url_for('profile', username=session['userLogged']))
+    elif request.method == 'POST' and request.form['username'] == "karipova" and request.form['psw'] == '123':
+        session['userLogged'] = request.form['username']
+        return redirect(url_for('profile', username=session['userLogged']))
+    return render_template('login.html', title="Авторизация", menu=dbase.get_menu())
 
 
 @app.teardown_appcontext
