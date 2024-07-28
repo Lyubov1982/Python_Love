@@ -1,0 +1,26 @@
+{% extends 'sporty/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Спорт как образ жизни</h1>
+
+<div class="img">
+    <img src="{% static 'sporty/sp.jpg' %}" alt="">
+</div>
+
+<h2>Виды тренировок:</h2>
+
+<div class="block">
+    {% for project in projects %}
+    <div class="element">
+        <div>
+            <img src="{{project.image.url}}" alt="">
+        </div>
+        <div class="text">
+            <h2><a href="{{ project.url }}" target="_blank">{{ project.title }}</a></h2>
+            <p>{{ project.description|truncatechars:500 }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

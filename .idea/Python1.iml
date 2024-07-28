@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/django/password_generator_project" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/django_home/my_first_project" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/django_two/personal_portfolio" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/django_home/personal_portfolio_home" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/django_three/todos" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
     <orderEntry type="inheritedJdk" />

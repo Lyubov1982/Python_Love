@@ -6,7 +6,7 @@ body{
     width: 400px;
     margin: 0 auto;
 }
-h1{
+h1, h2{
     text-align: center;
 }
 h2{
@@ -20,4 +20,10 @@ h2{
 }
 .button{
     background: greenyellow;
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+}
+.input{
+    text-align: center;
 }
