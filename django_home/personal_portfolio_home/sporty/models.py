@@ -7,3 +7,6 @@ class Sporty(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='sporty/images/')
     url = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.title

@@ -5,8 +5,18 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'sporty/12.ico' %}">
 </head>
 <body>
+<div class="menu">
+    <div class="wrap">
+        <ul>
+            <li><a href="{% url 'index' %}">Главная</a></li>
+            <li><a href="{% url 'blogs' %}">Блог</a></li>
+            <li><a href="{% static 'sporty/resume.pdf' %}" target="_blank">Книга</a></li>
+        </ul>
+    </div>
+</div>
     <div class="content">
         <div class="wrap">
             {% block content %}
