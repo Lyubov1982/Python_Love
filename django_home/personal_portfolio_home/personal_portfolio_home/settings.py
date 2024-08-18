@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sporty.apps.SportyConfig',
-    'blog.apps.BlogConfig'
+    'blog.apps.BlogConfig',
+    'registration.apps.RegistrationConfig',
 ]
 
 MIDDLEWARE = [
